@@ -39,7 +39,7 @@ DEFAULT_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    'south',
+    'rest_framework',
 )
 
 LOCAL_APPS = (
@@ -68,12 +68,8 @@ WSGI_APPLICATION = 'bayless.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bayless',
-        'USER': 'Jason',
-        'PASSWORD': 'Othello',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -98,4 +94,15 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'www/app/'),
+    os.path.join(BASE_DIR, 'www/bower_components/'),
 )
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'www/app/'),
+)
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

@@ -1,0 +1,16 @@
+{
+  "name": "bayless",
+  "version": "0.0.0",
+  "authors": [
+    "jason.a.parent@gmail.com (Jason Parent)"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

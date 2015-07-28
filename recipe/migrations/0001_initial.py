@@ -1,20 +1,33 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        pass
+    dependencies = [
+    ]
 
-    def backwards(self, orm):
-        pass
-
-    models = {
-        
-    }
-
-    complete_apps = ['recipe']
+    operations = [
+        migrations.CreateModel(
+            name='Recipe',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=255)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Tag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('type', models.CharField(max_length=255, choices=[(b'CA', b'Category'), (b'IN', b'Ingredient'), (b'FL', b'Flavor'), (b'EQ', b'Equipment')])),
+                ('key', models.CharField(unique=True, max_length=255)),
+            ],
+        ),
+        migrations.AddField(
+            model_name='recipe',
+            name='tags',
+            field=models.ManyToManyField(to='recipe.Tag', null=True, blank=True),
+        ),
+    ]
